@@ -119,6 +119,37 @@ module.exports = function(grunt) {
       }
     },
 
+    devImports: {
+      options: {
+        startTag: '<!--IMPORTS-->',
+        endTag: '<!--IMPORTS END-->',
+        fileTmpl: '<link rel="import" href="%s">',
+        appRoot: '.tmp/public'
+      },
+
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').importFilesToInject,
+        'views/**/*.html': require('../pipeline').importFilesToInject,
+        'views/**/*.ejs': require('../pipeline').importFilesToInject
+      }
+    },
+
+    devImportsRelative: {
+      options: {
+        startTag: '<!--IMPORTS-->',
+        endTag: '<!--IMPORTS END-->',
+        fileTmpl: '<link rel="import" href="%s">',
+        appRoot: '.tmp/public',
+        relative: true
+      },
+
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').importFilesToInject,
+        'views/**/*.html': require('../pipeline').importFilesToInject,
+        'views/**/*.ejs': require('../pipeline').importFilesToInject
+      }
+    },
+
     prodStyles: {
       options: {
         startTag: '<!--STYLES-->',

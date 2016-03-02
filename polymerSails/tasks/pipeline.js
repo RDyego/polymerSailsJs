@@ -11,6 +11,11 @@
  *   https://github.com/balderdashy/sails-docs/blob/master/anatomy/myApp/tasks/pipeline.js.md
  */
 
+// Import files to inject in order
+//
+var importFilesToInject = [
+  'bower_components/paper-button/paper-button.html'
+];
 
 // CSS files to inject in order
 //
@@ -30,6 +35,7 @@ var jsFilesToInject = [
 
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
+  'bower_components/webcomponentsjs/webcomponents-lite.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
@@ -62,6 +68,9 @@ var tmpPath = '.tmp/public/';
 // Prefix relative paths to source files so they point to the proper locations
 // (i.e. where the other Grunt tasks spit them out, or in some cases, where
 // they reside in the first place)
+module.exports.importFilesToInject = importFilesToInject.map(function(importPath) {
+  return require('path').join('.tmp/public/', importPath);
+});
 module.exports.cssFilesToInject = cssFilesToInject.map(function(cssPath) {
   return require('path').join('.tmp/public/', cssPath);
 });
