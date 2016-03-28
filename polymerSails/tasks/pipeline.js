@@ -14,7 +14,10 @@
 // Import files to inject in order
 //
 var importFilesToInject = [
-  'bower_components/paper-button/paper-button.html'
+  'bower_components/paper-button/paper-button.html',
+  'bower_components/paper-item/paper-item.html',
+  'bower_components/paper-toolbar/paper-toolbar.html',
+  'bower_components/paper-menu/paper-menu.html'
 ];
 
 // CSS files to inject in order
